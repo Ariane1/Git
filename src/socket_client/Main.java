@@ -24,24 +24,25 @@ public class Main {
         if ("number chosen".equals(inSocket.readLine())) {
             System.out.println("The server has chosen his number");
             System.out.println("Can you guess the number ?");
-            boolean test = false;
+            boolean test_client = false;
             do {
                 Scanner sc = new Scanner(System.in);
                 int clientTry = sc.nextInt();
                 outSocket.println(clientTry);
                 if ("wrong".equals(inSocket.readLine())) {
                     System.out.println("Wrong, please try again");
-                    if ("higher".equals(inSocket.readLine())){
-                        System.out.println("The number is higher");
-                    }else{
+                    if (0 > clientTry || clientTry > 5){
+                        System.out.println("Put a number between 0 and 5");
+                    }else if ("lower".equals(inSocket.readLine())){
                         System.out.println("The number is lower");
+                    }else if ("higher".equals(inSocket.readLine())){
+                        System.out.println("The number is higher");
                     }
                 } else {
                     System.out.println("Good job ! You've found the number");
-                    test = true;
+                    test_client = true;
                 }
-            } while (!test);
-
+            } while (!test_client);
         }
         System.out.println("End.");
         socket.close();
