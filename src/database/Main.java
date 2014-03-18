@@ -6,7 +6,7 @@ package database;
 
 /**
  *
- * @author ychabcho
+ * @author Ariane
  */
 import java.sql.*;
 
@@ -89,7 +89,7 @@ public class Main {
     }
 
     private void doDeleteTest() {
-        System.out.print("\n[Performing DELETE] ... ");
+        System.out.print("\n[Performing DELETING CHOCOLAT FROM COFFEES] ... ");
         try {
             Statement st = conn.createStatement();
             st.executeUpdate("DELETE FROM COFFEES WHERE COF_NAME='chocolat'");
@@ -115,7 +115,7 @@ public class Main {
         System.out.print("\n[Performing UPDATE] ... ");
         try {
             Statement st = conn.createStatement();
-            st.executeUpdate("UPDATE COFFEES SET PRICE=PRICE+1");
+            st.executeUpdate("UPDATE COFFEES SET PRICE = PRICE + 1");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
