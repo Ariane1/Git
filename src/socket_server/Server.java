@@ -45,7 +45,7 @@ public class Server {
         public void run() {
             try {
                 if ("I'm here !".equals(in_socket.readLine())) {
-                    boolean test = false;
+                    boolean test_server = false;
                     int randNumber = (int) (Math.random() * 5);
                     System.out.println("I've chosen number " + randNumber);
                     out_socket.println("number chosen");
@@ -53,16 +53,16 @@ public class Server {
                         int answerClient = Integer.parseInt(in_socket.readLine());
                         if (answerClient != randNumber) {
                             out_socket.println("wrong");
-                            if (answerClient < randNumber) {
+                            if (0 <= answerClient && answerClient < randNumber) {
                                 out_socket.println("higher");
-                            } else {
+                            } else if (5 >= answerClient && answerClient > randNumber){
                                 out_socket.println("lower");
                             }
                         } else {
                             out_socket.println("right");
-                            test = true;
+                            test_server = true;
                         }
-                    } while (!test);
+                    } while (!test_server);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
